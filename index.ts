@@ -1,8 +1,6 @@
-import { Prisma, PrismaClient } from "../../prisma/dup-client";
+import { Prisma, PrismaClient } from "./prisma/read-replica-client";
 
-const prisma2 = new PrismaClient({
-    log: ['query', 'info', 'warn', 'error']
-});
+const prisma = new PrismaClient();
 
 const lowercaseFirstLetter = (string: string) => {
     return string.charAt(0).toLowerCase() + string.slice(1)
@@ -20,7 +18,7 @@ const lowercaseFirstLetter = (string: string) => {
  * 4. The user must be able to provide a RR client provider
  */
 
-const PrismaReadReplica = (modelsToExclude: string[] = [], client: any) => {
+const PrismaReadReplica = (modelsToExclude: string[] = []) => {
     const middleware = async (
         params: Prisma.MiddlewareParams,
         next: (params: Prisma.MiddlewareParams) => Promise<any>
@@ -51,7 +49,7 @@ const PrismaReadReplica = (modelsToExclude: string[] = [], client: any) => {
         await next(params);
 
         // @ts-ignore
-        return prisma2[lowercaseFirstLetter(params.model)][params.action](params.args)
+        return prisma[lowercaseFirstLetter(params.model)][params.action](params.args)
     }
 
     return {

@@ -1,6 +1,6 @@
 generator client {
   provider = "prisma-client-js"
-  output = "./dup-client"
+  output = "read-replica-client"
 }
 
 datasource db {
