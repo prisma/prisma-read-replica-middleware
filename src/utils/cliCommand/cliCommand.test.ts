@@ -1,4 +1,4 @@
-import cliCommand from "./cliCommand";
+import cliCommand from ".";
 
 const yargsMock = {
     positional: jest.fn()

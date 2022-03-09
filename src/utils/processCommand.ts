@@ -5,7 +5,7 @@ import combineSchemas from "./combineSchemas";
 import { execute } from "@getvim/execute";
 
 export default async (
-    argv,  
+    argv: { schema: string, readReplicaSchema: string },  
     copiedSchemaPath: string, 
     copiedReadReplicaSchemaPath: string,
     combinedReadReplicaSchemaPath: string
