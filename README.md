@@ -2,7 +2,7 @@
 
 ## Installation
 
-1. `npm i prisma-read-replica --save` (or local path)
+1. `npm i prisma-read-replica --save` (or `npm i` to local path if installed locally)
 
 ## Usage
 
@@ -10,7 +10,8 @@
 2. Inside `read-replica-schema.prisma` add _only_ `generator` and `datasource` blocks.
 3. In the `generator` block, set `output` to `read-replica-client`.
 4. In the `datasource` block, add the URL of your read replica database.
-5. Wherever you instantiate Prisma using `new PrismaClient()`, instantiate `PrismaReadReplica` and apply it with `$use`. For example:
+5. As part of your build process locally and in all environments, run `prisma-read-replica generate` to generate the Read Replica client.
+6. Wherever you instantiate Prisma using `new PrismaClient()`, instantiate `PrismaReadReplica` and apply it with `$use`. For example:
 ```
 import { Prisma, PrismaClient } from '@prisma/client'
 import PrismaReadReplica from 'prisma-read-replica';
@@ -24,7 +25,6 @@ const modelsToExclude = ['user'];
 const readReplica = PrismaReadReplica(modelsToExclude);
 
 prisma.$use(readReplica.middleware);
-
 ```
 
 ## Limitations
