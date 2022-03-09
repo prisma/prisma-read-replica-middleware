@@ -1,6 +1,5 @@
+# Ignore artifacts:
 node_modules/
 prisma/read-replica-client/
-.idea/
-.DS_Store
 coverage/
 dist/

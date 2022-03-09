@@ -12,6 +12,7 @@
 4. In the `datasource` block, add the URL of your read replica database.
 5. As part of your build process locally and in all environments, run `prisma-read-replica generate` to generate the Read Replica client.
 6. Wherever you instantiate Prisma using `new PrismaClient()`, instantiate `PrismaReadReplica` and apply it with `$use`. For example:
+
 ```
 import { Prisma, PrismaClient } from '@prisma/client'
 import PrismaReadReplica from 'prisma-read-replica';
