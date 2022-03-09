@@ -10,12 +10,6 @@ const lowercaseFirstLetter = (string: string) => {
  *
  * @param modelsToExclude
  * @constructor
- *
- * Requirements:
- * 1. User must be able to exclude models from the read-replica
- * 2. The middleware must only intercept requests with models and find* actions
- * 3. The user must be able to provide a RR datasource
- * 4. The user must be able to provide a RR client provider
  */
 
 const PrismaReadReplica = (modelsToExclude: string[] = []) => {

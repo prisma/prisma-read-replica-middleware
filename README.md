@@ -23,9 +23,7 @@ const prisma = new PrismaClient({
 
 const modelsToExclude = ['user'];
 
-const readReplica = PrismaReadReplica(modelsToExclude);
-
-prisma.$use(readReplica.middleware);
+prisma.$use(PrismaReadReplica(modelsToExclude));
 ```
 
 ## Limitations
