@@ -1,9 +1,0 @@
-generator client {
-  provider = "prisma-client-js"
-  output = "read-replica-client"
-}
-
-datasource db {
-  provider = "sqlite"
-  url      = "file:./rr.db"
-}
