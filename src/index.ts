@@ -1,4 +1,3 @@
-import { should } from "@prisma/sdk/dist/logger";
 //@ts-ignore
 import { Prisma, PrismaClient } from "../prisma/read-replica-client";
 
