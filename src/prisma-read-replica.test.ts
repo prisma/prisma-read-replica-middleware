@@ -82,7 +82,7 @@ test("PrismaReadReplica calls new prisma client if other checks pass", async () 
   expect(nextMock).toBeCalled();
 });
 
-test("PrismaReadReplica calls new prisma client if other checks pass", async () => {
+test("PrismaReadReplica calls new prisma client if other checks pass (and prisma client is generated)", async () => {
   const nextMock = jest.fn();
 
   // @ts-ignore

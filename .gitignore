@@ -1,6 +1,6 @@
 node_modules/
-prisma/read-replica-client/
-prisma/**/*.prisma
+/prisma/**/*.prisma
+/prisma/read-replica-client/
 .idea/
 .DS_Store
 coverage/

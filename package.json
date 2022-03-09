@@ -12,7 +12,6 @@
   "license": "ISC",
   "dependencies": {
     "@getvim/execute": "^1.0.0",
-    "@prisma/client": "^3.9.2",
     "@prisma/sdk": "^3.10.0",
     "get-installed-path": "^4.0.8",
     "prisma": "^3.10.0",
