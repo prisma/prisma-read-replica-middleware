@@ -7,21 +7,20 @@
     "test": "jest",
     "generate-client": "npx prisma generate --schema ./prisma.schema"
   },
-  "bin": "bin/prisma-read-replica.mjs",
+  "bin": "src/bin/prisma-read-replica.mjs",
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@getvim/execute": "^1.0.0",
     "@prisma/client": "^3.9.2",
     "@prisma/sdk": "^3.10.0",
-    "abstract-syntax-tree": "^2.20.5",
     "get-installed-path": "^4.0.8",
-    "ncp": "^2.0.0",
     "prisma": "^3.10.0",
     "yargs": "^17.3.1"
   },
   "devDependencies": {
     "@types/jest": "^27.4.1",
+    "@types/ncp": "^2.0.5",
     "jest": "^27.5.1",
     "prettier": "2.5.1",
     "ts-jest": "^27.1.3",

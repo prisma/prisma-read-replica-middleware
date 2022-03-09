@@ -1,4 +1,4 @@
-import { Prisma, PrismaClient } from "./prisma/read-replica-client";
+import { Prisma, PrismaClient } from "../prisma/read-replica-client";
 
 const prisma = new PrismaClient();
 

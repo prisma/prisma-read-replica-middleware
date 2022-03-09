@@ -1,32 +1,23 @@
 import fs from "fs";
 import { getSchema, trimBlocksFromSchema } from "@prisma/sdk";
-import copySchemas from "./copySchemas";
-import combineSchemas from "./combineSchemas";
+import combineSchemas from "../combineSchemas";
 import { execute } from "@getvim/execute";
 
 export default async (
   argv: { schema: string; readReplicaSchema: string },
-  copiedSchemaPath: string,
-  copiedReadReplicaSchemaPath: string,
   combinedReadReplicaSchemaPath: string
 ) => {
-  await copySchemas(
-    argv.schema,
-    argv.readReplicaSchema,
-    copiedSchemaPath,
-    copiedReadReplicaSchemaPath
-  );
-
-  const copiedSchema = await getSchema(copiedSchemaPath);
-  const readReplicaSchema = await getSchema(copiedReadReplicaSchemaPath);
-  const trimmedSchema = trimBlocksFromSchema(copiedSchema, [
+  const { schema, readReplicaSchema } = argv;
+  const schemaString = await getSchema(schema);
+  const readReplicaSchemaString = await getSchema(readReplicaSchema);
+  const trimmedSchema = trimBlocksFromSchema(schemaString, [
     "datasource",
     "generator",
   ]).trim();
 
   fs.writeFile(
     combinedReadReplicaSchemaPath,
-    combineSchemas(trimmedSchema, readReplicaSchema),
+    combineSchemas(trimmedSchema, readReplicaSchemaString),
     (err) => {
       if (err) {
         console.error(err);
