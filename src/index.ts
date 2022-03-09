@@ -1,3 +1,4 @@
+import { should } from "@prisma/sdk/dist/logger";
 import { Prisma, PrismaClient } from "../prisma/read-replica-client";
 
 const prisma = new PrismaClient();
@@ -35,7 +36,7 @@ const PrismaReadReplica = (modelsToExclude: string[] = []) => {
       return await next(params);
     }
 
-    // We need to call next() or all subsequent middleware is skipped. See https://www.prisma.io/docs/concepts/components/prisma-client/middleware#running-order-and-the-middleware-stack
+    // We need to call next() first or all subsequent middleware is skipped. See https://www.prisma.io/docs/concepts/components/prisma-client/middleware#running-order-and-the-middleware-stack
     await next(params);
 
     // @ts-ignore
