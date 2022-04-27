@@ -1,4 +1,4 @@
-import PrismaReadReplica from ".";
+import PrismaReadReplicaMiddleware from ".";
 
 jest.mock("../prisma/read-replica-client", () => {
   return {
@@ -14,13 +14,10 @@ jest.mock("../prisma/read-replica-client", () => {
   };
 });
 
-test("PrismaReadReplica returns a middleware function", () => {
-  expect(PrismaReadReplica()).toHaveProperty("middleware");
-});
-
 test("PrismaReadReplica calls next if the model is undefined", async () => {
   const nextMock = jest.fn();
-  const middleware = PrismaReadReplica().middleware(
+  const init = PrismaReadReplicaMiddleware()
+  init(
     { action: "count", args: "", dataPath: [], runInTransaction: false },
     nextMock
   );
@@ -32,7 +29,8 @@ test("PrismaReadReplica calls next if the action called should be ignored", asyn
   const nextMock = jest.fn();
 
   // @ts-ignore
-  const middleware = PrismaReadReplica().middleware(
+  const init = PrismaReadReplicaMiddleware()
+  init(
     {
       action: "create",
       model: "",
@@ -50,7 +48,8 @@ test("PrismaReadReplica calls next if the model called should be ignored", async
   const nextMock = jest.fn();
 
   // @ts-ignore
-  const middleware = PrismaReadReplica(["User"]).middleware(
+  const init = PrismaReadReplicaMiddleware(["User"])
+  init(
     {
       action: "find",
       model: "User",
@@ -68,7 +67,8 @@ test("PrismaReadReplica calls new prisma client if other checks pass", async () 
   const nextMock = jest.fn();
 
   // @ts-ignore
-  const middleware = PrismaReadReplica(["User"]).middleware(
+  const init = PrismaReadReplicaMiddleware(["User"])
+  init(
     {
       action: "find",
       model: "User",
@@ -86,7 +86,8 @@ test("PrismaReadReplica calls new prisma client if other checks pass (and prisma
   const nextMock = jest.fn();
 
   // @ts-ignore
-  const middleware = await PrismaReadReplica([]).middleware(
+  const init = PrismaReadReplicaMiddleware([])
+  const middleware = await init(
     {
       action: "findMany",
       model: "User",

@@ -1,8 +1,8 @@
-# Prisma Read Replica
+# Prisma Read Replica Middleware
 
 ## Installation
 
-1. `npm i prisma-read-replica --save` (or `npm i` to local path if installed locally)
+1. `npm i prisma-read-replica-middleware --save`
 
 ## Usage
 
@@ -15,20 +15,40 @@
 
 ```
 import { Prisma, PrismaClient } from '@prisma/client'
-import PrismaReadReplica from 'prisma-read-replica';
+import PrismaReadReplicaMiddleware from 'prisma-read-replica';
 
-const prisma = new PrismaClient({
-  log: ['query', 'info', 'warn', 'error'],
-});
+const modelsToExclude = ['User'];
 
-const modelsToExclude = ['user'];
-
-const readReplica = PrismaReadReplica(modelsToExclude);
-
-prisma.$use(PrismaReadReplica.middleware);
+prisma.$use(PrismaReadReplicaMiddleware(modelsToExclude));
 ```
 
 ## Limitations
 
 1. This middleware does not perform migrations against a read replica database.
-2. This middleware does not account for custom providers.
+2. This middleware only intercepts the following actions: find, findMany, findUnique
+3. This middleware does not account for custom providers.
+4. This middleware does not account for nested reads. In the following example the request will _not_ be sent to the Read Replica because `User` is an excluded model.
+
+```
+import { Prisma, PrismaClient } from '@prisma/client'
+import PrismaReadReplicaMiddleware from 'prisma-read-replica';
+
+const prisma = new PrismaClient({
+  log: ['query', 'info', 'warn', 'error'],
+});
+
+const modelsToExclude = ['User'];
+
+prisma.$use(PrismaReadReplicaMiddleware(modelsToExclude));
+
+const getUsers = await prisma.user.findMany({
+  where: {
+    email: {
+      contains: 'test',
+    },
+  },
+  include: {
+    post: true,
+  },
+})
+```

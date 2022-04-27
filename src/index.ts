@@ -12,8 +12,8 @@ const lowercaseFirstLetter = (string: string) => {
  * @constructor
  */
 
-const PrismaReadReplica = (modelsToExclude: string[] = []) => {
-  const middleware = async (
+const PrismaReadReplicaMiddleware = (modelsToExclude: string[] = []) => {
+  return async (
     params: Prisma.MiddlewareParams,
     next: (params: Prisma.MiddlewareParams) => Promise<any>
   ) => {
@@ -43,10 +43,6 @@ const PrismaReadReplica = (modelsToExclude: string[] = []) => {
       params.args
     );
   };
-
-  return {
-    middleware,
-  };
 };
 
-export default PrismaReadReplica;
+export default PrismaReadReplicaMiddleware;

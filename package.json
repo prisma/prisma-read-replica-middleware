@@ -1,15 +1,20 @@
 {
-  "name": "prisma-read-replica",
+  "name": "prisma-read-replica-middleware",
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": ">=12.6"
+  },
   "scripts": {
     "test": "jest",
     "generate-client": "npx prisma generate --schema ./prisma.schema"
   },
   "bin": "src/bin/prisma-read-replica.mjs",
-  "author": "",
-  "license": "ISC",
+  "license": "Apache-2.0",
+  "maintainers": [
+    "Andrew Carlson <carlson@prisma.io>"
+  ],
   "dependencies": {
     "@getvim/execute": "^1.0.0",
     "@prisma/sdk": "^3.10.0",
