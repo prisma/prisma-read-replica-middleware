@@ -1,5 +1,7 @@
 # Prisma Read Replica Middleware
 
+We have provided this middleware as an example only, and without warranty. It is not intended for use in a production environment. Please consider the limitations documented below before adding it to your application.
+
 ## Installation
 
 1. `npm i prisma-read-replica-middleware --save`
@@ -27,7 +29,7 @@ prisma.$use(PrismaReadReplicaMiddleware(modelsToExclude));
 1. This middleware does not perform migrations against a read replica database.
 2. This middleware only intercepts the following actions: find, findMany, findUnique
 3. This middleware does not account for custom providers.
-4. This middleware does not account for nested reads. In the following example the request will _not_ be sent to the Read Replica because `User` is an excluded model.
+4. This middleware does not account for nested reads because middleware does not have access to the underlying SQL query. In the following example the request will _not_ be sent to the Read Replica because `User` is an excluded model.
 
 ```
 import { Prisma, PrismaClient } from '@prisma/client'
