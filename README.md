@@ -15,7 +15,7 @@ We have provided this middleware as an example only, and without warranty. It is
 5. As part of your build process locally and in all environments, run `prisma-read-replica generate` to generate the Read Replica client.
 6. Wherever you instantiate Prisma using `new PrismaClient()`, instantiate `PrismaReadReplica` and apply it with `$use`. For example:
 
-```
+```ts
 import { Prisma, PrismaClient } from '@prisma/client'
 import PrismaReadReplicaMiddleware from 'prisma-read-replica';
 
