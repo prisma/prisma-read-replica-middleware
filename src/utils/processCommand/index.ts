@@ -4,8 +4,8 @@ import combineSchemas from "../combineSchemas";
 import { execute } from "@getvim/execute";
 
 export default async (
-  argv: { schema: string; readReplicaSchema: string },
-  combinedReadReplicaSchemaPath: string
+  combinedReadReplicaSchemaPath: string,
+  argv: { schema: string; readReplicaSchema: string }
 ) => {
   const { schema, readReplicaSchema } = argv;
   const schemaString = await getSchema(schema);

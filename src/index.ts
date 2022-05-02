@@ -37,7 +37,7 @@ const PrismaReadReplicaMiddleware = (modelsToExclude: string[] = []) => {
 
     // We need to call next() first or all subsequent middleware is skipped. See https://www.prisma.io/docs/concepts/components/prisma-client/middleware#running-order-and-the-middleware-stack
     await next(params);
-
+    
     // @ts-ignore
     return prisma[lowercaseFirstLetter(params.model)][params.action](
       params.args

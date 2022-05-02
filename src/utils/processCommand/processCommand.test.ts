@@ -33,24 +33,24 @@ jest.mock("@getvim/execute", () => {
 
 test("processCommand requests schema from the schema path", async () => {
   const response = await processCommand(
+    "3",
     { schema: "1", readReplicaSchema: "2" },
-    "3"
   );
   expect(getSchema).toBeCalledWith("1");
 });
 
 test("processCommand requests schema from the read replica schema path", async () => {
   const response = await processCommand(
+    "3",
     { schema: "1", readReplicaSchema: "2" },
-    "3"
   );
   expect(getSchema).toBeCalledWith("2");
 });
 
 test("processCommand trims datasource and generator from original schema", async () => {
   const response = await processCommand(
+    "3",
     { schema: "1", readReplicaSchema: "2" },
-    "3"
   );
   expect(trimBlocksFromSchema).toBeCalledWith(undefined, [
     "datasource",
@@ -60,16 +60,16 @@ test("processCommand trims datasource and generator from original schema", async
 
 test("processCommand writes new file", async () => {
   const response = await processCommand(
+    "3",
     { schema: "1", readReplicaSchema: "2" },
-    "3"
   );
   expect(writeFile).toBeCalled();
 });
 
 test("processCommand executes npx prisma generate with combined file path", async () => {
   const response = await processCommand(
+    "3",
     { schema: "1", readReplicaSchema: "2" },
-    "3"
   );
   expect(execute).toBeCalledWith("npx prisma generate --schema 3");
 });

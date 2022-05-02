@@ -17,7 +17,7 @@ We have provided this middleware as an example only, and without warranty. It is
 
 ```ts
 import { Prisma, PrismaClient } from '@prisma/client'
-import PrismaReadReplicaMiddleware from 'prisma-read-replica';
+import PrismaReadReplicaMiddleware from 'prisma-read-replica-middleware';
 
 const modelsToExclude = ['User'];
 
