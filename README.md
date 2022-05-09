@@ -2,9 +2,11 @@
 
 We have provided this middleware as an example only, and without warranty. It is not intended for use in a production environment. Please consider the limitations documented below before adding it to your application.
 
+Find implementation examples [here](https://github.com/prisma/middleware-examples/). 
+
 ## Installation
 
-1. `npm i prisma-read-replica-middleware --save`
+1. `npm i @prisma/prisma-read-replica-middleware --save`
 
 ## Usage
 

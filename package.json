@@ -1,6 +1,6 @@
 {
   "name": "@prisma/prisma-read-replica-middleware",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "dist/index.js",
   "engines": {
