@@ -4,7 +4,7 @@ import command from "../utils/cliCommand";
 import processCommand from "../utils/processCommand";
 
 const main = async () => {
-  const installedPath = await getInstalledPath("prisma-read-replica-middleware", {
+  const installedPath = await getInstalledPath("@prisma/prisma-read-replica-middleware", {
     local: true,
   });
   const schemaPath = `${installedPath}/prisma`;
