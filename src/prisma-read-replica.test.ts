@@ -33,7 +33,6 @@ test("PrismaReadReplica calls next if the action called should be ignored", asyn
   init(
     {
       action: "create",
-      model: "",
       args: "",
       dataPath: [],
       runInTransaction: false,
@@ -51,7 +50,7 @@ test("PrismaReadReplica calls next if the model called should be ignored", async
   const init = PrismaReadReplicaMiddleware(["User"])
   init(
     {
-      action: "find",
+      action: "findUnique",
       model: "User",
       args: "",
       dataPath: [],
@@ -70,7 +69,7 @@ test("PrismaReadReplica calls new prisma client if other checks pass", async () 
   const init = PrismaReadReplicaMiddleware(["User"])
   init(
     {
-      action: "find",
+      action: "findUnique",
       model: "User",
       args: "",
       dataPath: [],

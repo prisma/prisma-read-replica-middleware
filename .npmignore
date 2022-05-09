@@ -1,0 +1,15 @@
+src
+coverage
+.rollup.cache
+.idea
+.husky
+.eslintignore
+.eslintrc.js
+.prettierignore
+.prettierrc.yml
+jest.config.js
+rollup.config.js
+tsconfig.json
+.env
+.env.test
+*.tgz

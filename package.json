@@ -1,5 +1,5 @@
 {
-  "name": "prisma-read-replica-middleware",
+  "name": "@prisma/prisma-read-replica-middleware",
   "version": "0.0.1",
   "description": "",
   "main": "dist/index.js",

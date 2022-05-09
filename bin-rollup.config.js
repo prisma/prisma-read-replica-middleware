@@ -18,6 +18,6 @@ export default {
         outDir: 'dist/bin'
       },
     }),
-    //terser(),
+    terser(),
   ],
 }
