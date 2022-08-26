@@ -33,7 +33,7 @@ prisma.$use(PrismaReadReplicaMiddleware(modelsToExclude));
 3. This middleware does not account for custom providers.
 4. This middleware does not account for nested reads because middleware does not have access to the underlying SQL query. In the following example the request will _not_ be sent to the Read Replica because `User` is an excluded model.
 
-```
+```ts
 import { Prisma, PrismaClient } from '@prisma/client'
 import PrismaReadReplicaMiddleware from 'prisma-read-replica';
 
